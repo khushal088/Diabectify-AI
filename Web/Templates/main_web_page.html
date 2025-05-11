@@ -1,0 +1,637 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Diabectify AI</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        
+        :root {
+            --primary-color: #0077cc;
+            --secondary-color: #005a99;
+            --background-color: #EBF5FF;
+            --text-color: #333;
+        }
+* {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', 'Roboto', sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: var(--background-color);
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            
+            
+        }
+
+        
+        header {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 20px 0;
+            text-align: center;
+            
+            
+        }
+
+        .logo {
+    width: 100px;
+    height: 100px;
+    background-color: rgb(140, 140, 140);
+    border-radius: 50%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 18px;
+    animation: pulse 2s infinite;
+    background-image: url('/images/onlymclogo.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.05);
+            }
+            100% {
+                transform: scale(1);
+            }
+        }
+
+        header h1 {
+            font-size: 2.5rem;
+            
+        }
+
+        nav {
+            background-color: var(--secondary-color);
+            padding: 10px 0;
+        }
+
+        nav ul {
+            list-style-type: none;
+            display: flex;
+            justify-content: center;
+        }
+
+        nav ul li {
+            margin: 0 15px;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-size: 1rem;
+            transition: color 0.3s ease;
+        }
+
+        nav ul li a:hover {
+            color: #ddd;
+        }
+
+       
+        .hero {
+            background-image: url('/images/backgroungimg.jpg');
+            background-size: cover;
+            background-position: center;
+            color:aliceblue ;
+            text-align: center;
+            padding: 100px 0;
+        }
+
+        .hero h2 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: var(--primary-color);
+            color: white;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        .btn:hover {
+            background-color: darkblue;
+        }
+
+        
+        .overview {
+            padding: 60px 0;
+            text-align: center;
+        }
+
+        .overview h2 {
+            font-size: 2rem;
+            margin-bottom: 30px;
+        }
+
+        .stats {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+        }
+
+        .stat-item {
+            background-color: white;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            margin: 10px;
+            flex: 1;
+            min-width: 200px;
+        }
+
+        .stat-item p:first-child {
+            font-size: 2rem;
+            font-weight: bold;
+            color: var(--primary-color);
+        }
+
+        
+        .features {
+            background-color: white;
+            padding: 60px 0;
+        }
+
+        .features h2 {
+            text-align: center;
+            font-size: 2rem;
+            margin-bottom: 30px;
+        }
+
+        .feature-list {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+        }
+
+        .feature-item {
+            text-align: center;
+            margin: 20px;
+            flex: 1;
+            min-width: 250px;
+            max-width: 300px;
+        }
+
+        .feature-item img {
+            width: 100px;
+            height: 100px;
+            margin-bottom: 15px;
+        }
+
+        .feature-item h3 {
+            color: var(--primary-color);
+            margin-bottom: 10px;
+        }
+
+        
+        .testimonials {
+            background-color: #f4f4f4;
+            padding: 60px 0;
+            text-align: center;
+        }
+
+        .testimonials h2 {
+            font-size: 2rem;
+            margin-bottom: 30px;
+        }
+
+        .testimonial-item {
+            background-color: white;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        
+        footer {
+            background-color: #333;
+            color: white;
+            padding: 40px 0;
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+        }
+
+        .footer-section {
+            flex: 1;
+            margin: 10px;
+            min-width: 200px;
+        }
+
+        .footer-section h3 {
+            margin-bottom: 15px;
+        }
+
+        .footer-section ul {
+            list-style-type: none;
+        }
+
+        .footer-section ul li {
+            margin-bottom: 5px;
+        }
+
+        .footer-section a {
+            color: #1e90ff;
+            text-decoration: none;
+        }
+
+        .footer-section a:hover {
+            text-decoration: underline;
+        }
+
+        
+        .chatbot-button {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 60px;
+            height: 60px;
+            font-size: 24px;
+            cursor: pointer;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+            transition: background-color 0.3s ease;
+        }
+
+        .chatbot-button:hover {
+            background-color: darkblue;
+        }
+
+        .chatbot-container {
+            display: none;
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 360px;
+            height: 480px;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+            overflow: hidden;
+        }
+
+        .chatbot-header {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 10px;
+            text-align: center;
+            font-weight: bold;
+        }
+
+        .chatbot-messages {
+            height: 390px;
+            overflow-y: auto;
+            padding: 10px;
+        }
+
+        .chatbot-input {
+            display: flex;
+            padding: 10px;
+        }
+
+        .chatbot-input input {
+            flex-grow: 1;
+            padding: 5px;
+            border: 1px solid #ddd;
+            border-radius: 3px;
+        }
+
+        .chatbot-input button {
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            margin-left: 5px;
+            border-radius: 3px;
+            cursor: pointer;
+        }
+
+        .message {
+            margin-bottom: 10px;
+            padding: 5px 10px;
+            border-radius: 5px;
+            max-width: 80%;
+        }
+
+        .user-message {
+            background-color: #e6f2ff;
+            margin-left: auto;
+        }
+
+        .bot-message {
+            background-color: #f0f0f0;
+        }
+
+        
+        @media (max-width: 768px) {
+            .stats, .feature-list, .footer-content {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .stat-item, .feature-item, .footer-section {
+                width: 100%;
+                max-width: none;
+            }
+        }
+        .redkardo{
+            font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            color: rgb(241, 234, 210);  
+        }
+        .falling-icons {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            color: white;
+        }
+        .icon {
+            position: absolute;
+            width: 30px;
+            opacity: 0.9;
+            animation: fall 4s linear infinite;
+            filter: brightness(0) invert(1);
+        }
+
+        
+        .icon:nth-child(1)  { left: 5%; animation-delay: 0s; }
+        .icon:nth-child(2)  { right: 10%; animation-delay: 0.5s; }
+        .icon:nth-child(3)  { left: 20%; animation-delay: 1s; }
+        .icon:nth-child(4)  { right: 25%; animation-delay: 1.5s; }
+        .icon:nth-child(5)  { left: 35%; animation-delay: 2s; }
+        .icon:nth-child(6)  { right: 40%; animation-delay: 2.5s; }
+        .icon:nth-child(7)  { left: 50%; animation-delay: 3s; }
+        .icon:nth-child(8)  { right: 55%; animation-delay: 3.5s; }
+        .icon:nth-child(9)  { left: 65%; animation-delay: 4s; }
+        .icon:nth-child(10) { right: 70%; animation-delay: 4.5s; }
+        .icon:nth-child(11) { left: 80%; animation-delay: 5s; }
+        .icon:nth-child(12) { right: 85%; animation-delay: 5.5s; }
+        .icon:nth-child(13) { left: 10%; animation-delay: 6s; }
+        .icon:nth-child(14) { right: 15%; animation-delay: 6.5s; }
+        .icon:nth-child(15) { left: 30%; animation-delay: 7s; }
+        .icon:nth-child(16) { right: 35%; animation-delay: 7.5s; }
+        .icon:nth-child(17) { left: 50%; animation-delay: 8s; }
+        .icon:nth-child(18) { right: 55%; animation-delay: 8.5s; }
+        .icon:nth-child(19) { left: 70%; animation-delay: 9s; }
+        .icon:nth-child(20) { right: 75%; animation-delay: 9.5s; }
+
+        
+        @keyframes fall {
+            0% { top: -100px; opacity: 0; transform: rotate(0deg);}
+            50% { opacity: 1; transform: rotate(15deg);}
+            100% { top: 150px; opacity: 0; transform: rotate(-15deg);}
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="falling-icons">
+            <img class="icon" src="https://img.icons8.com/ios/50/heart-with-pulse.png" alt="Heart">
+            <img class="icon" src="https://img.icons8.com/ios/50/stethoscope.png" alt="Stethoscope">
+            <img class="icon" src="https://img.icons8.com/ios/50/pills.png" alt="Pills">
+            <img class="icon" src="https://img.icons8.com/ios/50/hospital.png" alt="Hospital">
+            <img class="icon" src="https://img.icons8.com/ios/50/syringe.png" alt="Syringe">
+            <img class="icon" src="https://img.icons8.com/ios/50/bandage.png" alt="Bandage">
+            <img class="icon" src="https://img.icons8.com/ios/50/ambulance.png" alt="Ambulance">
+            <img class="icon" src="https://img.icons8.com/ios/50/clipboard.png" alt="Clipboard">
+            <img class="icon" src="https://img.icons8.com/ios/50/thermometer.png" alt="Thermometer">
+            <img class="icon" src="https://img.icons8.com/ios/50/hospital-bed.png" alt="Hospital Bed">
+            <img class="icon" src="https://img.icons8.com/ios/50/microscope.png" alt="Microscope">
+            <img class="icon" src="https://img.icons8.com/ios/50/health-book.png" alt="Health Book">
+        </div>
+    </div>
+        <div class="container">
+            <div class="logo"></div>
+            
+            <h1>Diabectify AI</h1>
+           <div class="redkardo">
+            <h1>GO SWEET NOT SUGAR</h1>
+           </div>
+            <p>Your Path to Better Health Starts Here</p>
+        </div>
+    </header>
+    <nav>
+        <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#features">Features</a></li>
+            <li><a href="#form">Prediction Form</a></li>
+            <li><a href="#testimonials">Testimonials</a></li>
+        </ul>
+    </nav>
+
+    <section class="hero" id="home">
+        <div class="container">
+            <h2>Predict, Prevent, and Protect</h2>
+            
+            <p>  Predict Your Risk Based on:</p>
+            <a href="templates/population.html" class="btn">Projection of Diabetes Cases</a>
+            <a href="lifestyle_form.html" class="btn">Lifestyle Based</a>
+            <a href="medical_form.html" class="btn">Classify Your Type of Diabetes</a>
+            <a href="gestation_form.html" class="btn">Gestational Diabetes Prediction</a>
+            
+        </div>
+    </section>
+
+    <section class="overview">  
+        <div class="container">
+            <h2>Overview</h2>
+            <p>Diabetes is a chronic disease that occurs when the pancreas does not produce enough insulin or when the body cannot effectively use the insulin it produces. Diabectify AI helps track and predict your health by assessing key metrics and providing personalized insights.</p>
+            <div class="stats">
+                <div class="stat-item">
+                    <p>14%</p>
+                    <p>of adults aged 18+ were living with diabetes in 2022.</p>
+                </div>
+                <div class="stat-item">
+                    <p>3 in 5</p>
+                    <p>adults aged 30+ living with diabetes are not on medication.</p>
+                </div>
+                <div class="stat-item">
+                    <p>1 in 2</p>
+                    <p>deaths from diabetes occurred before age 70.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="features" id="features">
+        <div class="container">
+            <h2>What Diabectify-AI Does</h2>
+            <div class="feature-list">
+                <div class="feature-item">
+                    <img src="/images/analyze-icon.png" alt="Analyze">
+                    <h3>Analyzes Key Health Metrics</h3>
+                    <p>Metabolic AI evaluates essential inputs such as age, body mass index (BMI), blood sugar levels, family history, and lifestyle habits to assess diabetes risk.</p>
+                </div>
+                <div class="feature-item">
+                    <img src="/images/personalized-insights-icon.png" alt="Personalized Insights">
+                    <h3>Generates Personalized Insights</h3>
+                    <p>The platform suggests actionable next steps, such as lifestyle changes or consulting healthcare professionals, tailored to your unique health profile.</p>
+                </div>
+                <div class="feature-item">
+                    <img src="/images/preventative-health-icon.png" alt="Preventative Health">
+                    <h3>Supports Preventative Health</h3>
+                    <p>Early detection can help prevent complications, enabling users to make informed decisions about their health.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="testimonials" id="testimonials">
+        <div class="container">
+            <h2>What People Say</h2>
+            <div class="testimonial-item">
+                <p>"This system helped me manage my health proactively. Absolutely amazing!"</p>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3></h3>
+                    <p>We are a team of four students developing Diabectify AI as part of MlOps Project. Our mission is to leverage AI technology for early diabetes prediction, empowering individuals to take charge of their health.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Our Team</h3>
+                    <ul>
+                        <li>Khushal Sharma</li>
+                        <li>Shardul Mhetre</li>
+                        <li>Aditya Pawar</li>
+                        <li>Soham Walimbe</li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Contact Us</h3>
+                    <p>📞 Phone: +123456789</p>
+                    <p>📧 Email: contact@Diabectifyai.com</p>
+                    <a href="https://github.com/khushal088/Diabectify-AI.git" target="_blank">GitHub Repository</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <button class="chatbot-button" onclick="toggleChatbot()">💬</button>
+
+    <div class="chatbot-container" id="chatbot">
+        <div class="chatbot-header">Diabectify AI Chatbot</div>
+        <div class="chatbot-messages" id="chatbot-messages"></div>
+        <div class="chatbot-input">
+            <input type="text" id="user-input" placeholder="Type your message...">
+            <button onclick="sendMessage()">Send</button>
+        </div>
+    </div>
+
+    <script>
+        function toggleChatbot() {
+            const chatbot = document.getElementById('chatbot');
+            chatbot.style.display = chatbot.style.display === 'none' ? 'block' : 'none';
+        }
+
+        async function sendMessage() {
+            const userInput = document.getElementById('user-input');
+            const chatMessages = document.getElementById('chatbot-messages');
+            const message = userInput.value.trim();
+
+            if (message === '') return;
+
+            
+            const userMessageEl = document.createElement('div');
+            userMessageEl.classList.add('message', 'user-message');
+            userMessageEl.textContent = message;
+            chatMessages.appendChild(userMessageEl);
+
+            
+            userInput.value = '';
+
+            try {
+                
+                const response = await fetch('http://localhost:5000/chat', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({ message: message })
+                });
+
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+
+                const data = await response.json();
+
+               
+                const botMessageEl = document.createElement('div');
+                botMessageEl.classList.add('message', 'bot-message');
+                botMessageEl.textContent = data.response;
+                chatMessages.appendChild(botMessageEl);
+            } catch (error) {
+                console.error('Error:', error);
+                
+                const errorMessageEl = document.createElement('div');
+                errorMessageEl.classList.add('message', 'bot-message');
+                errorMessageEl.textContent = "Sorry, there was an error processing your request.";
+                chatMessages.appendChild(errorMessageEl);
+            }
+
+           
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+        }
+
+        
+        document.getElementById('user-input').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                sendMessage();
+            }
+        });
+    </script>
+
+   
+</body>
+</html>
