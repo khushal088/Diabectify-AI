@@ -41,28 +41,8 @@
  *Programming Languages & Tools:*  
  1.	Languages: Python for machine learning, model development & integration and deployment.  
  2.	Frameworks/Libraries: Scikit-learn, Pandas, NumPy, Flask for backend APIs, NLTK and Transformers for NLP  
-   
- # Intel Technology used -
-   
- *Optimized Libraries Used:*  
- •	Intel oneAPI Data Analytics Library (oneDAL): Accelerated performance for training and inference of Decision Tree and Random Forest classifiers.  
- •	Intel Math Kernel Library (MKL): Enhanced performance of numerical computations for regression and data preprocessing.  
-   
- *Frameworks Used:*  
- •	TensorFlow with Intel Optimizations: Accelerates the NLP model for the chatbot.  
- •	Scikit-learn (optimized for Intel hardware): Builds and evaluates predictive models like Decision Trees and Random Forest Classifiers.  
-   
- *Toolkits Used:*  
- Intel Distribution of OpenVINO Toolkit: Streamlined deployment of machine learning models on Intel hardware for real-time prediction tasks.  
-   
- *Hardware Used:*  
- Intel-based Workstations/Laptops: Development and testing of models.  
- Intel AI DevCloud: Enabled access to scalable compute resources for training, fine-tuning, and testing models efficiently.  
- Pre-trained Models and Platforms:  
- Hugging Face Models: Leveraged transformer models like BERT for chatbot NLP tasks, optimized using Intel Neural Compressor.  
- Intel Tiber Cloud:
- For requesting resources necessary to execute the Machine Learning algorithms and for coding.  
- 
+
+    
  # Social, Ecological and Economic Impact -
  1.	Social Impact: Diabectify AI raises awareness about diabetes, enabling early detection and prevention, improving quality of life, and reducing healthcare disparities.  
  2.	Economic Impact: By predicting and managing diabetes cases, the project reduces healthcare costs for governments and individuals, minimizes losses from diabetes-related complications, and optimizes resource allocation in hospitals and clinics.  
