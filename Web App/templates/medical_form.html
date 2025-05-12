@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Health Data Form</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #EBF5FF;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
+        .container {
+            background-color: #FFFFFF;
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 800px;
+        }
+
+        h1 {
+            text-align: center;
+            color: #1E40AF;
+            margin-bottom: 30px;
+            font-size: 32px;
+        }
+
+        form {
+            display: grid;
+            gap: 24px;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        label {
+            color: #1E40AF;
+            font-weight: 500;
+            font-size: 16px;
+        }
+
+        input, select {
+            width: 100%;
+            padding: 8px 12px;
+            border: 1px solid #93C5FD;
+            border-radius: 4px;
+            font-size: 16px;
+            background-color: white;
+            box-sizing: border-box;
+        }
+
+        select {
+            appearance: none;
+            background-image: url("data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%231E40AF%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13-5.4H18.4c-5%200-9.3%201.8-12.9%205.4A17.6%2017.6%200%200%200%200%2082.2c0%205%201.8%209.3%205.4%2012.9l128%20127.9c3.6%203.6%207.8%205.4%2012.8%205.4s9.2-1.8%2012.8-5.4L287%2095c3.5-3.5%205.4-7.8%205.4-12.8%200-5-1.9-9.2-5.5-12.8z%22%2F%3E%3C%2Fsvg%3E");
+            background-repeat: no-repeat;
+            background-position: right 12px center;
+            background-size: 12px;
+            padding-right: 30px;
+        }
+
+        input:focus, select:focus {
+            outline: none;
+            border-color: #3B82F6;
+            box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.2);
+        }
+
+        button {
+            grid-column: 1 / -1;
+            padding: 12px;
+            background-color: #2563EB;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #1D4ED8;
+        }
+
+        @media (max-width: 600px) {
+            form {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Classify Type of Diabetes</h1>
+        <form action="/medical_result" method="POST">
+            <!-- Numeric inputs -->
+            <div class="form-group">
+                <label for="age">Age:</label>
+                <input type="number" id="age" name="Age" required>
+            </div>
+            <div class="form-group">
+                <label for="bmi">BMI:</label>
+                <input type="number" id="bmi" name="BMI" step="0.1" required>
+            </div>
+            <div class="form-group">
+                <label for="insulin">Insulin Levels:</label>
+                <input type="number" id="insulin" name="InsulinLevels" required>
+            </div>
+            <div class="form-group">
+                <label for="bp">Blood Pressure:</label>
+                <input type="number" id="bp" name="BloodPressure" required>
+            </div>
+            <div class="form-group">
+                <label for="cholesterol">Cholesterol Levels:</label>
+                <input type="number" id="cholesterol" name="CholesterolLevels" required>
+            </div>
+            <div class="form-group">
+                <label for="waist">Waist Circumference:</label>
+                <input type="number" id="waist" name="WaistCircumference" required>
+            </div>
+            <div class="form-group">
+                <label for="glucose">Blood Glucose Levels:</label>
+                <input type="number" id="glucose" name="BloodGlucoseLevels" required>
+            </div>
+            <div class="form-group">
+                <label for="weight">Weight Gain During Pregnancy:</label>
+                <input type="number" id="weight" name="WeightGainDuringPregnancy">
+            </div>
+            <div class="form-group">
+                <label for="pancreatic">Pancreatic Health:</label>
+                <input type="number" id="pancreatic" name="PancreaticHealth">
+            </div>
+            <div class="form-group">
+                <label for="pulmonary">Pulmonary Function:</label>
+                <input type="number" id="pulmonary" name="PulmonaryFunction">
+            </div>
+            <div class="form-group">
+                <label for="digestive">Digestive Enzyme Levels:</label>
+                <input type="number" id="digestive" name="DigestiveEnzymeLevels">
+            </div>
+            <div class="form-group">
+                <label for="birth">Birth Weight:</label>
+                <input type="number" id="birth" name="BirthWeight">
+            </div>
+            <div class="form-group">
+                <label for="neurologicalassessments">Neurological Assessments:</label>
+                <input type="number" id="neurologicalassessments" name="NeurologicalAssessments">
+            </div>
+
+            <!-- Dropdown inputs -->
+            <div class="form-group">
+                <label for="GeneticMarkers">Genetic Markers:</label>
+                <select id="GeneticMarkers" name="GeneticMarkers" required>
+                    <option value="Positive">Positive</option>
+                    <option value="Negative">Negative</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="Autoantibodies">Autoantibodies:</label>
+                <select id="Autoantibodies" name="Autoantibodies" required>
+                    <option value="Positive">Positive</option>
+                    <option value="Negative">Negative</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="FamilyHistory">Family History:</label>
+                <select id="FamilyHistory" name="FamilyHistory" required>
+                    <option value="Yes">Yes</option>
+                    <option value="No">No</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="EnvironmentalFactors">Environmental Factors:</label>
+                <select id="EnvironmentalFactors" name="EnvironmentalFactors" required>
+                    <option value="Present">Present</option>
+                    <option value="Absent">Absent</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="PhysicalActivity">Physical Activity:</label>
+                <select id="PhysicalActivity" name="PhysicalActivity" required>
+                    <option value="low">Low</option>
+                    <option value="moderate">Moderate</option>
+                    <option value="high">High</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="DietaryHabits">Dietary Habits:</label>
+                <select id="DietaryHabits" name="DietaryHabits" required>
+                    <option value="Healthy">Healthy</option>
+                    <option value="Unhealthy">Unhealthy</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="Ethnicity">Ethnicity:</label>
+                <select id="Ethnicity" name="Ethnicity" required>
+                    <option value="high risk">High Risk</option>
+                    <option value="low risk">Low Risk</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="SocioeconomicFactors">Socioeconomic Factors:</label>
+                <select id="SocioeconomicFactors" name="SocioeconomicFactors" required>
+                    <option value="low">Low</option>
+                    <option value="moderate">Moderate</option>
+                    <option value="high">High</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="SmokingStatus">Smoking Status:</label>
+                <select id="SmokingStatus" name="SmokingStatus" required>
+                    <option value="smoker">Smoker</option>
+                    <option value="non-smoker">Non-smoker</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="AlcoholConsumption">Alcohol Consumption:</label>
+                <select id="AlcoholConsumption" name="AlcoholConsumption" required>
+                    <option value="low">Low</option>
+                    <option value="moderate">Moderate</option>
+                    <option value="high">High</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="GlucoseToleranceTest">Glucose Tolerance Test:</label>
+                <select id="GlucoseToleranceTest" name="GlucoseToleranceTest" required>
+                    <option value="normal">Normal</option>
+                    <option value="abnormal">Abnormal</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="HistoryOfPCOS">History of PCOS:</label>
+                <select id="HistoryOfPCOS" name="HistoryOfPCOS" required>
+                    <option value="Yes">Yes</option>
+                    <option value="No">No</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="PreviousGestationalDiabetes">Previous Gestational Diabetes:</label>
+                <select id="PreviousGestationalDiabetes" name="PreviousGestationalDiabetes" required>
+                    <option value="Yes">Yes</option>
+                    <option value="No">No</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="PregnancyHistory">Pregnancy History:</label>
+                <select id="PregnancyHistory" name="PregnancyHistory" required>
+                    <option value="normal">Normal</option>
+                    <option value="complicated">Complicated</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="CysticFibrosisDiagnosis">Cystic Fibrosis Diagnosis:</label>
+                <select id="CysticFibrosisDiagnosis" name="CysticFibrosisDiagnosis" required>
+                    <option value="Yes">Yes</option>
+                    <option value="No">No</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="SteroidUseHistory">Steroid Use History:</label>
+                <select id="SteroidUseHistory" name="SteroidUseHistory" required>
+                    <option value="Yes">Yes</option>
+                    <option value="No">No</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="GeneticTesting">Genetic Testing:</label>
+                <select id="GeneticTesting" name="GeneticTesting" required>
+                    <option value="Positive">Positive</option>
+                    <option value="Negative">Negative</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="LiverFunctionTests">Liver Function Tests:</label>
+                <select id="LiverFunctionTests" name="LiverFunctionTests" required>
+                    <option value="normal">Normal</option>
+                    <option value="abnormal">Abnormal</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="UrineTest">Urine Test:</label>
+                <select id="UrineTest" name="UrineTest" required>
+                    <option value="Protein Present">Protein Present</option>
+                    <option value="Normal">Normal</option>
+                    <option value="Glucose Present">Glucose Present</option>
+                    <option value="Ketones Present">Ketones Present</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="EarlyOnsetSymptoms">Early Onset Symptoms:</label>
+                <select id="EarlyOnsetSymptoms" name="EarlyOnsetSymptoms" required>
+                    <option value="Yes">Yes</option>
+                    <option value="No">No</option>
+                </select>
+            </div>
+
+            <!-- Submit button -->
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+</body>
+</html>
