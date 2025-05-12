@@ -427,6 +427,96 @@
             50% { opacity: 1; transform: rotate(15deg);}
             100% { top: 150px; opacity: 0; transform: rotate(-15deg);}
         }
+            .chatbot-button {
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        font-size: 24px;
+        padding: 10px 15px;
+        border-radius: 50%;
+        background-color: #007bff;
+        color: white;
+        border: none;
+        cursor: pointer;
+        z-index: 1000;
+    }
+
+    .chatbot-container {
+        position: fixed;
+        bottom: 80px;
+        right: 20px;
+        width: 420px;
+        height: 550px;
+        background: #fff;
+        border: 1px solid #ccc;
+        border-radius: 10px;
+        display: flex;
+        flex-direction: column;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        z-index: 1000;
+    }
+
+    .chatbot-header {
+        background-color: #007bff;
+        color: white;
+        padding: 10px;
+        font-weight: bold;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        border-top-left-radius: 10px;
+        border-top-right-radius: 10px;
+    }
+
+    .close-button {
+        background: none;
+        border: none;
+        color: white;
+        font-size: 18px;
+        cursor: pointer;
+    }
+
+    .chatbot-messages {
+        flex: 1;
+        padding: 10px;
+        overflow-y: auto;
+        font-family: sans-serif;
+    }
+
+    .chatbot-input {
+        display: flex;
+        border-top: 1px solid #ccc;
+    }
+
+    .chatbot-input input {
+        flex: 1;
+        padding: 10px;
+        border: none;
+        outline: none;
+        font-size: 14px;
+    }
+
+    .chatbot-input button {
+        padding: 10px;
+        background-color: #007bff;
+        color: white;
+        border: none;
+        cursor: pointer;
+    }
+
+    .message {
+        margin-bottom: 10px;
+    }
+
+    .user-message {
+        text-align: right;
+        color: #007bff;
+    }
+
+    .bot-message {
+        text-align: left;
+        color: #333;
+    }
     </style>
 </head>
 <body>
@@ -556,81 +646,80 @@
             </div>
         </div>
     </footer>
+<!-- Chatbot Button -->
+<button class="chatbot-button" onclick="toggleChatbot()">💬</button>
 
-    <button class="chatbot-button" onclick="toggleChatbot()">💬</button>
-
-    <div class="chatbot-container" id="chatbot">
-        <div class="chatbot-header">Diabectify AI Chatbot</div>
-        <div class="chatbot-messages" id="chatbot-messages"></div>
-        <div class="chatbot-input">
-            <input type="text" id="user-input" placeholder="Type your message...">
-            <button onclick="sendMessage()">Send</button>
-        </div>
+<!-- Chatbot Container -->
+<div class="chatbot-container" id="chatbot" style="display: none;">
+    <div class="chatbot-header">
+        <span>Diabectify AI Chatbot</span>
+        <button class="close-button" onclick="toggleChatbot()">×</button>
     </div>
+    <div class="chatbot-messages" id="chatbot-messages"></div>
+    <div class="chatbot-input">
+        <input type="text" id="user-input" placeholder="Type your message...">
+        <button onclick="sendMessage()">Send</button>
+    </div>
+</div>
 
+
+    
     <script>
-        function toggleChatbot() {
-            const chatbot = document.getElementById('chatbot');
-            chatbot.style.display = chatbot.style.display === 'none' ? 'block' : 'none';
-        }
+    function toggleChatbot() {
+        const chatbot = document.getElementById('chatbot');
+        chatbot.style.display = chatbot.style.display === 'none' ? 'flex' : 'none';
+    }
 
-        async function sendMessage() {
-            const userInput = document.getElementById('user-input');
-            const chatMessages = document.getElementById('chatbot-messages');
-            const message = userInput.value.trim();
+    async function sendMessage() {
+        const userInput = document.getElementById('user-input');
+        const chatMessages = document.getElementById('chatbot-messages');
+        const message = userInput.value.trim();
 
-            if (message === '') return;
+        if (message === '') return;
 
-            
-            const userMessageEl = document.createElement('div');
-            userMessageEl.classList.add('message', 'user-message');
-            userMessageEl.textContent = message;
-            chatMessages.appendChild(userMessageEl);
+        const userMessageEl = document.createElement('div');
+        userMessageEl.classList.add('message', 'user-message');
+        userMessageEl.textContent = message;
+        chatMessages.appendChild(userMessageEl);
 
-            
-            userInput.value = '';
+        userInput.value = '';
 
-            try {
-                
-                const response = await fetch('http://localhost:5000/chat', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
-                    body: JSON.stringify({ message: message })
-                });
+        try {
+            const response = await fetch('https://mlops-459610.de.r.appspot.com/chat', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ message: message })
+            });
 
-                if (!response.ok) {
-                    throw new Error('Network response was not ok');
-                }
-
-                const data = await response.json();
-
-               
-                const botMessageEl = document.createElement('div');
-                botMessageEl.classList.add('message', 'bot-message');
-                botMessageEl.textContent = data.response;
-                chatMessages.appendChild(botMessageEl);
-            } catch (error) {
-                console.error('Error:', error);
-                
-                const errorMessageEl = document.createElement('div');
-                errorMessageEl.classList.add('message', 'bot-message');
-                errorMessageEl.textContent = "Sorry, there was an error processing your request.";
-                chatMessages.appendChild(errorMessageEl);
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
             }
 
-           
-            chatMessages.scrollTop = chatMessages.scrollHeight;
+            const data = await response.json();
+
+            const botMessageEl = document.createElement('div');
+            botMessageEl.classList.add('message', 'bot-message');
+            botMessageEl.textContent = data.response;
+            chatMessages.appendChild(botMessageEl);
+        } catch (error) {
+            console.error('Error:', error);
+            const errorMessageEl = document.createElement('div');
+            errorMessageEl.classList.add('message', 'bot-message');
+            errorMessageEl.textContent = "Sorry, there was an error processing your request.";
+            chatMessages.appendChild(errorMessageEl);
         }
 
-        
-        document.getElementById('user-input').addEventListener('keypress', function(e) {
-            if (e.key === 'Enter') {
-                sendMessage();
-            }
-        });
-    </script>
+        chatMessages.scrollTop = chatMessages.scrollHeight;
+    }
+
+    document.getElementById('user-input').addEventListener('keypress', function(e) {
+        if (e.key === 'Enter') {
+            sendMessage();
+        }
+    });
+</script>
 
    
 </body>
