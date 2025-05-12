@@ -1,0 +1,6 @@
+flask
+flask_Cors
+joblib
+numpy
+scikit_learn
+gunicorn
